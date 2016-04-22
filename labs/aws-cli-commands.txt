@@ -1,0 +1,5 @@
+aws ec2 create-security-group --group-name yklyachman-cli-sec-grp --description "yklyachman aws cli SecGrp" --vpc-id vpc-b425efd0
+
+aws ec2 authorize-security-group-ingress --group-name yklyachman-cli-sec-grp --protocol tcp --port 22 --cidr 199.16.140.30/32
+
+aws --profile intuitdevopsbootcamp ec2 run-instances --image-id ami-c229c0a2 --count 1 --user-data file://install.tomcat.txt --instance-type t2.micro --key-name yklyachman-key --security-group-ids sg-56694b31 --subnet-id subnet-d31f1c8a
